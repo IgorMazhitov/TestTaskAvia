@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link, Outlet } from "react-router-dom";
 import { AviaContext } from "../../Context/Context";
 import { calendarIcon } from "../../SVGs/elements";
 import { AviaContextType } from "../../types";
@@ -23,45 +24,50 @@ import { AviaContextType } from "../../types";
 
         return (
 
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center items-center">
+            <>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col justify-center items-center">
 
-                <div className="w-[962px] h-[100px] rounded-t-2xl bg-blue-400 flex flex-row justify-evenly items-center">
+                    <div className="w-[962px] h-[100px] rounded-t-2xl bg-blue-400 flex flex-row justify-evenly items-center">
 
-                    <div className="flex flex-col h-full items-start justify-center">
-                        <label htmlFor="from">Откуда</label>
-                        <input type="text" id="from" className="w-[208px] h-10 rounded-xl bg-slate-50 text-center" placeholder="Город вылета" value={searchPlaceFrom} onChange={(e) => searchPlaceFromChange(e.target.value)}/>
-                    </div>
-
-                    <div className="flex flex-col h-full items-start justify-center">
-                        <label htmlFor="to">Куда</label>
-                        <input type="text" id="to" className="w-[208px] h-10 rounded-xl bg-slate-50 text-center" placeholder="Город прилёта" value={searchPlaceTo} onChange={(e) => searchPlaceToChange(e.target.value)}/>
-                    </div>
-
-                    <div className="flex flex-col h-full items-start justify-center">
-                        <label htmlFor="date1">Туда</label>
-                        <div className="relative flex flex-col">
-                            <div className="absolute left-2 top-1/2 -translate-y-1/2">{calendarIcon}</div>
-                            <input type="text" id="date1" className="w-[208px] h-10 rounded-xl bg-slate-50 text-center" placeholder="ДД/ММ/ГГ" value={searchDateTo} onChange={(e) => searchDateToChange(e.target.value)}/>
+                        <div className="flex flex-col h-full items-start justify-center">
+                            <label htmlFor="from">Откуда</label>
+                            <input type="text" id="from" className="w-[208px] h-10 rounded-xl bg-slate-50 text-center" placeholder="Город вылета" value={searchPlaceFrom} onChange={(e) => searchPlaceFromChange(e.target.value)}/>
                         </div>
+
+                        <div className="flex flex-col h-full items-start justify-center">
+                            <label htmlFor="to">Куда</label>
+                            <input type="text" id="to" className="w-[208px] h-10 rounded-xl bg-slate-50 text-center" placeholder="Город прилёта" value={searchPlaceTo} onChange={(e) => searchPlaceToChange(e.target.value)}/>
+                        </div>
+
+                        <div className="flex flex-col h-full items-start justify-center">
+                            <label htmlFor="date1">Туда</label>
+                            <div className="relative flex flex-col">
+                                <div className="absolute left-2 top-1/2 -translate-y-1/2">{calendarIcon}</div>
+                                <input type="text" id="date1" className="w-[208px] h-10 rounded-xl bg-slate-50 text-center" placeholder="ДД/ММ/ГГ" value={searchDateTo} onChange={(e) => searchDateToChange(e.target.value)}/>
+                            </div>
+                        </div>
+
+                        <div className="flex flex-col h-full items-start justify-center">
+                            <label htmlFor="date2">Обратно</label>
+                            <div className="relative flex flex-col">
+                                <div className="absolute left-2 top-1/2 -translate-y-1/2">{calendarIcon}</div>
+                                <input type="text" id="date2" className="w-[208px] h-10 rounded-xl bg-slate-50 text-center" placeholder="ДД/ММ/ГГ" value={searchDateBack} onChange={(e) => searchDateBackChange(e.target.value)}/>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div className="flex flex-col h-full items-start justify-center">
-                        <label htmlFor="date2">Обратно</label>
-                        <div className="relative flex flex-col">
-                            <div className="absolute left-2 top-1/2 -translate-y-1/2">{calendarIcon}</div>
-                            <input type="text" id="date2" className="w-[208px] h-10 rounded-xl bg-slate-50 text-center" placeholder="ДД/ММ/ГГ" value={searchDateBack} onChange={(e) => searchDateBackChange(e.target.value)}/>
-                        </div>
+                    <div className="w-[962px] h-[86px] rounded-b-2xl border border-blue-400 flex flex-col justify-center items-end">
+
+                        <Link to='/avia/info'><button className="w-[158px] h-10 bg-blue-400 rounded-xl mr-7 cursor-pointer disabled:opacity-60" disabled={submitState} onClick={submitHandler}>Найти билеты</button></Link> 
+
                     </div>
 
                 </div>
 
-                <div className="w-[962px] h-[86px] rounded-b-2xl border border-blue-400 flex flex-col justify-center items-end">
+                <Outlet/>
+            </>
 
-                    <button className="w-[158px] h-10 bg-blue-400 rounded-xl mr-7 cursor-pointer disabled:opacity-60" disabled={submitState} onClick={submitHandler}>Найти билеты</button>
-
-                </div>
-
-            </div>
 
         )
 

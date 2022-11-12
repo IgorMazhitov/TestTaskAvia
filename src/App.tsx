@@ -2,6 +2,14 @@ import React, { useState } from 'react';
 import AviaPage from './components/AviaPage/AviaPage';
 import CardsPage from './components/CardsPage/CardsPage';
 import { AviaContext } from './Context/Context';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  BrowserRouter
+} from "react-router-dom";
+import GoPage from './components/GoPage';
 
 function App() {
 
@@ -30,10 +38,14 @@ function App() {
       submitState, submitStateChange,
       cardsPageState, cardsPageStateChange
     }}>
-      <div className="App">
-        {aviaPageState && <AviaPage/>}
-        {cardsPageState && <CardsPage/>}
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<GoPage/>}>
+            <Route path='/avia/info' element={<CardsPage/>} />
+            <Route path='/avia' element={<AviaPage/>} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </AviaContext.Provider>
   );
 }

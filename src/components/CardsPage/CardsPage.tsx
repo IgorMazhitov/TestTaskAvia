@@ -19,7 +19,7 @@ import CardData from "./CardData";
         
         return (
 
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-row justify-start items-center w-[980px] border border-slate-300 rounded-2xl min-h-[200px]">
+            <div className="overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-row justify-start items-center w-[980px] border border-slate-300 rounded-2xl min-h-[200px]">
 
                 <div>
                     <CardData {...value}/>
